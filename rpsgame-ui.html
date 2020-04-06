@@ -47,7 +47,7 @@
           play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
           playerScoreBoard.textContent = 'YOU: ' + playerScore;
           computerScoreBoard.textContent = 'CPU: ' + computerScore;
-          playByPlay.appendChild(play);
+          playByPlay.prepend(play);
          } 
          if (computerSelection === 'paper'){
            computerScore++
@@ -55,14 +55,14 @@
            play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
            playerScoreBoard.textContent = 'YOU: ' + playerScore;
            computerScoreBoard.textContent = 'CPU: ' + computerScore;
-           playByPlay.appendChild(play);
+           playByPlay.prepend(play);
          }
          if (computerSelection === 'rock') {
             var play = document.createElement('p');
            play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! " 
            playerScoreBoard.textContent = 'YOU: ' + playerScore;
            computerScoreBoard.textContent = 'CPU: ' + computerScore;
-           playByPlay.appendChild(play);
+           playByPlay.prepend(play);
          }
        }
        
@@ -73,7 +73,7 @@
             play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          } 
          if (computerSelection === 'scissors'){
             computerScore++
@@ -81,14 +81,14 @@
             play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          }
          if (computerSelection === 'paper') {
             var play = document.createElement('p');
             play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! "
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          }
        }
        
@@ -99,7 +99,7 @@
             play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          } 
          if (computerSelection === 'rock'){
             computerScore++
@@ -107,14 +107,14 @@
             play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          }
          if (computerSelection === 'scissors') {
             var play = document.createElement('p');
             play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! "
             playerScoreBoard.textContent = 'YOU: ' + playerScore;
             computerScoreBoard.textContent = 'CPU: ' + computerScore;
-            playByPlay.appendChild(play);
+            playByPlay.prepend(play);
          }
        }
 
@@ -125,13 +125,13 @@
     
     //Function to notify winner
     function winnerNotify() {
-      if (playerScore >=5) {
+      if (playerScore >= 5) {
                winner.textContent = "YAY! You Defeated the Computer";
-    } else if (computerScore >=3) {
+    } else if (computerScore >= 5) {
                winner.textContent = "DRATS! You Lose :(";
           
     } else {
-                winner.textContent = "Keep Playing! First To 5 Wins"
+                winner.textContent = "Keep Playing! First To 5 Wins";
     }
     }
     
