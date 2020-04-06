@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+   <div id="choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id= "scissors">Scissors</button>
+   </div>
+   <div class='scoreboard'>
+        <h1 id='playerScore'></h1>
+        <h1 id='computerScore'></h1>
+        <h1 id='winner'></h1>
+   </div>
+   <div id ='playByPlay'>
+
+   </div>
+</body>
+
+<script>
+    const playerOptions = document.getElementById('choices');
+    const playerScoreBoard = document.getElementById('playerScore');
+    const computerScoreBoard = document.getElementById('computerScore');
+    const playByPlay = document.getElementById('playByPlay');
+    const winner = document.getElementById('winner');
+
+
+    // Setting the score
+    let playerScore = 0
+    let computerScore = 0
+    
+    // Function to allow the computer to choose
+    function computerPlay(){
+        var computerChoice = [ "rock", "paper", "scissors"];
+        return computerChoice[Math.floor(Math.random() * computerChoice.length)];
+    };
+
+    // Function to Play a Round
+    function playRound(playerSelection, computerSelection) {
+       if (playerSelection === 'rock'){
+         if(computerSelection === 'scissors'){
+          playerScore++
+          var play = document.createElement('p');
+          play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
+          playerScoreBoard.textContent = 'YOU: ' + playerScore;
+          computerScoreBoard.textContent = 'CPU: ' + computerScore;
+          playByPlay.appendChild(play);
+         } 
+         if (computerSelection === 'paper'){
+           computerScore++
+           var play = document.createElement('p');
+           play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
+           playerScoreBoard.textContent = 'YOU: ' + playerScore;
+           computerScoreBoard.textContent = 'CPU: ' + computerScore;
+           playByPlay.appendChild(play);
+         }
+         if (computerSelection === 'rock') {
+            var play = document.createElement('p');
+           play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! " 
+           playerScoreBoard.textContent = 'YOU: ' + playerScore;
+           computerScoreBoard.textContent = 'CPU: ' + computerScore;
+           playByPlay.appendChild(play);
+         }
+       }
+       
+       else if (playerSelection === 'paper'){
+        if(computerSelection === 'rock'){
+            playerScore++
+            var play = document.createElement('p');
+            play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         } 
+         if (computerSelection === 'scissors'){
+            computerScore++
+            var play = document.createElement('p');
+            play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         }
+         if (computerSelection === 'paper') {
+            var play = document.createElement('p');
+            play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! "
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         }
+       }
+       
+       else if (playerSelection === 'scissors'){
+        if(computerSelection === 'paper'){
+            playerScore++
+            var play = document.createElement('p');
+            play.textContent = "You Win! " + String(playerSelection.toUpperCase()) + " beats " + String(computerSelection.toUpperCase());
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         } 
+         if (computerSelection === 'rock'){
+            computerScore++
+            var play = document.createElement('p');
+            play.textContent = "You Lose! " + String(computerSelection.toUpperCase()) + " beats " + String(playerSelection.toUpperCase())
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         }
+         if (computerSelection === 'scissors') {
+            var play = document.createElement('p');
+            play.textContent= "You both chose " + computerSelection.toUpperCase() + ". It's a Tie! "
+            playerScoreBoard.textContent = 'YOU: ' + playerScore;
+            computerScoreBoard.textContent = 'CPU: ' + computerScore;
+            playByPlay.appendChild(play);
+         }
+       }
+
+       else {
+        alert('You did not enter a valid choice. Try again.');
+       }
+    }
+    
+    //Function to notify winner
+    function winnerNotify() {
+      if (playerScore >=5) {
+               winner.textContent = "YAY! You Defeated the Computer";
+    } else if (computerScore >=3) {
+               winner.textContent = "DRATS! You Lose :(";
+          
+    } else {
+                winner.textContent = "Keep Playing! First To 5 Wins"
+    }
+    }
+    
+  
+    playerOptions.addEventListener('click', function(e) {
+               const playerSelection = (e.target.textContent.toLowerCase());
+               var computerSelection = computerPlay();
+               playRound(playerSelection, computerSelection);
+               winnerNotify();
+               });  
+</script>
+</html>
